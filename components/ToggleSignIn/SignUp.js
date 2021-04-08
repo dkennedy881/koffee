@@ -14,10 +14,11 @@ const Step1 = ({
   setStep,
   isEmailValid,
   isPasswordValid,
+  doSignUp
 }) => {
   const validateEmailAndPassword = () => {
     if (isEmailValid() && isPasswordValid()) {
-      setStep(step + 1);
+      doSignUp();
     }
   };
   return (
@@ -39,7 +40,7 @@ const Step1 = ({
         />
       </View>
       <View style={styles.ButtonSection}>
-        <ButtonPaper text={'Submit'} onPress={validateEmailAndPassword} />
+        <ButtonPaper text={'Create Account'} onPress={validateEmailAndPassword} />
       </View>
     </>
   );
@@ -103,6 +104,7 @@ const SignUp = ({
   isEmailValid,
   isPasswordValid,
 }) => {
+
   const [step, setStep] = useState(1);
 
   const StepDisplay = () => {
@@ -119,9 +121,14 @@ const SignUp = ({
           setStep={setStep}
           isEmailValid={isEmailValid}
           isPasswordValid={isPasswordValid}
+          doSignUp={doSignUp}
         />
       );
     }
+    {/**
+    @Deprecated
+    //TODO -  may add back on future enhancement
+    
     if (step === 2) {
       return (
         <Step2
@@ -135,6 +142,7 @@ const SignUp = ({
         />
       );
     }
+    */}
   };
   return (
     <>
